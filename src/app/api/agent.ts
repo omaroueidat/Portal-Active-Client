@@ -3,6 +3,7 @@ import { Activity } from '../models/activity';
 import { toast } from 'react-toastify';
 import { router } from '../router/Routes';
 import { store } from '../stores/store';
+import { User, UserFormValues } from '../models/user';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
@@ -66,6 +67,17 @@ axios.interceptors.response.use(async res =>{
 
 })
 
+// Add the token in the headers of the request
+axios.interceptors.request.use(conf => {
+    // Get the token from our store
+    const token = store.commonStore.token;
+    
+    // Add the token to header using Bearer
+    if (token && conf.headers) conf.headers.Authorization = `Bearer ${token}`;
+    
+    return conf;
+})
+
 const responseBody = <T> (respone : AxiosResponse<T>) => respone.data;
 
 const request = {
@@ -83,8 +95,15 @@ const Activities = {
     delete: (id: string) => request.del<void>(`/activities/${id}`),
 }
 
+const Account = {
+    current: () => request.get<User>('/account'),
+    login: (user: UserFormValues) => request.post<User>('/account/login', user),
+    register: (user: UserFormValues) => request.post<User>('/account/register', user),
+}
+
 const agent = {
-    Activities
+    Activities,
+    Account
 }
 
 export default agent;
