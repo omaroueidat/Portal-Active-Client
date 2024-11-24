@@ -3,7 +3,6 @@ import { User, UserFormValues } from "../models/user";
 import agent from "../api/agent";
 import { router } from "../router/Routes";
 import { store } from "./store";
-import CommonStore from "./commonStore";
 
 export default class UserStore{
     // User that we will store
