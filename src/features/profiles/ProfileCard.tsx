@@ -8,6 +8,14 @@ interface Props{
 }
 
 export default observer(function ProfileCard({profile} : Props){
+
+    // A function with simple logic to cut the bio if it exceeds 40 characters
+    function truncate(str: string | undefined){
+        if (str){
+            return str.length > 40 ? str.substring(0, 40) + '...' : str;
+        }
+    }
+
     return (
         <Card as={Link} to={`/profiles/${profile.username}`}>
             <Image src={profile.image || '/assets/user.png'} />
@@ -17,7 +25,7 @@ export default observer(function ProfileCard({profile} : Props){
                 </Card.Header>
 
                 <Card.Description>
-                    Bio Goes Here
+                    {profile.bio ? truncate(profile.bio) : `Hey, I'm Using Portal Active`}
                 </Card.Description>
 
                 <Card.Content extra>
