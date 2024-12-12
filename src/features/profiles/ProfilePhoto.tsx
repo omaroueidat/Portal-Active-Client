@@ -4,7 +4,6 @@ import { Photo, Profile } from "../../app/models/profile";
 import { useStore } from "../../app/stores/store";
 import { SyntheticEvent, useState } from "react";
 import PhotoUploadWidget from "../../app/common/imageUpload/PhotoUploadWidget";
-import PhotoWidgetDropzone from "../../app/common/imageUpload/PhotoWidgetDropzone";
 
 interface Props {
     profile: Profile;
