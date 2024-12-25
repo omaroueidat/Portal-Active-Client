@@ -4,9 +4,7 @@ import ProfileContent from "./ProfileContent";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { useStore } from "../../app/stores/store";
-import { useField } from "formik";
 import { useEffect } from "react";
-import { router } from "../../app/router/Routes";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 
 export default observer(function ProfilePage() {
@@ -28,7 +26,7 @@ export default observer(function ProfilePage() {
             <Grid.Column width={16}>
                 {profile && 
                 <>
-                    <ProfileHeader profile={profile}/>
+                    <ProfileHeader profile={profile} />
                 
                     <ProfileContent profile={profile} />
                 </>

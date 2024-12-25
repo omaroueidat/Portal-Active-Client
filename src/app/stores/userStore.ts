@@ -32,10 +32,6 @@ export default class UserStore{
 
         // Close the Modal Form
         store.modalStore.closeModal();
-
-        // FOR TESTING PURPOSES 
-        // TOREMOVE
-        console.log(user)
     }
 
     register = async(creds: UserFormValues) => {
@@ -53,10 +49,6 @@ export default class UserStore{
 
         // Close the Modal Form
         store.modalStore.closeModal();
-
-        // FOR TESTING PURPOSES
-        // TOREMOVE
-        console.log(user);
     }
 
     logout = () => {

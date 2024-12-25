@@ -3,11 +3,9 @@ import ActivityList from './dashboard/ActivityList';
 import { useStore } from '../../app/stores/store';
 import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
-import LoadingComponent from '../../app/layout/LoadingComponent';
 import ActivityFilters from './dashboard/ActivityFilters';
 import { PagingParams } from '../../app/models/pagination';
 import InfiniteScroll from 'react-infinite-scroller';
-import { ActivityListItem } from './dashboard/ActivityListItem';
 import ActivityListItemPlaceholder from './dashboard/ActivityListItemPlaceholder';
 
 

@@ -14,11 +14,11 @@ const sleep = (delay: number) => {
     })
 }
 
-axios.defaults.baseURL = 'http://localhost:5066/api';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 axios.interceptors.response.use(async res =>{
     // Request successful
-    await sleep(1000);
+    if (import.meta.env.DEV) await sleep(1000);
 
     // If we have pagination header, then return the response as PAginatedResult
     const pagination = res.headers['pagination'];

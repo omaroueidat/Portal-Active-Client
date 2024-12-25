@@ -6,7 +6,7 @@ import LoginForm from "../users/LoginForm";
 import RegisterForm from "../users/RegisterForm";
 
 export default observer(function HomePage() {
-    const {userStore, modalStore} = useStore();
+    const {modalStore, commonStore: {token}} = useStore();
 
     return(
         <Segment inverted textAlign='center' vertical className='masthead'>
@@ -17,10 +17,10 @@ export default observer(function HomePage() {
 
                 {
                     // Check if the user is logged in or not
-                    userStore.isLoggedIn ?(
+                    token ?(
                     <>
                         <Header as='h2' inverted content='Welcome to Protal Active'/>
-                        <Button as={Link} to='/login' size='huge' inverted content='Go to Activities!'/>
+                        <Button as={Link} to='/activities' size='huge' inverted content='Go to Activities!'/>
                     </>
                     ) : (
                         <>

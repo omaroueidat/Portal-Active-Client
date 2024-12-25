@@ -1,4 +1,4 @@
-import { Reveal, Button, StrictEmbedProps, StrictRevealProps } from "semantic-ui-react";
+import { Reveal, Button } from "semantic-ui-react";
 import { Profile } from "../../app/models/profile";
 import { useStore } from "../../app/stores/store";
 import { SyntheticEvent } from "react";

@@ -117,7 +117,7 @@ export default class ProfileStore {
         this.loading = true;
         try{
             // Send the request to the API
-            const response = await agent.Profiles.deletePhoto(id);
+            await agent.Profiles.deletePhoto(id);
 
             // Update the local Lists
             runInAction(() => {
@@ -223,5 +223,13 @@ export default class ProfileStore {
         } finally {
             this.loadingActivities = false;
         }
+    }
+
+    get followingCount() {
+        return this.profile?.followingCount;
+    }
+
+    get followersCount() {
+        return this.profile?.followersCount;
     }
 }

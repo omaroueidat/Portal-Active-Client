@@ -2,7 +2,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import { observer } from 'mobx-react-lite';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import HomePage from '../../features/home/HomePage';
 import { ToastContainer } from 'react-toastify';
 import { useStore } from '../stores/store';
@@ -14,6 +14,7 @@ function App() {
     const location = useLocation();
 
     const {userStore, commonStore} = useStore();
+    const {isLoggedIn} = userStore;
 
     useEffect(() => {
         if (commonStore.token){
@@ -30,11 +31,16 @@ function App() {
 
     return (
       <>
+        <ScrollRestoration />
         <ModalContainer />
         <ToastContainer position='bottom-right' theme='colored'  />
         {location.pathname === '/' ? <HomePage /> : (
             <>
-                <NavBar />
+                {isLoggedIn ? (
+                    <NavBar />
+                ) : <></>
+                }
+                
 
                 <Container style={{margin: '7em'}}>
                     <Outlet />
