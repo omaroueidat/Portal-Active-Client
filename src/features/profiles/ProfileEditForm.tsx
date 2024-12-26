@@ -19,9 +19,8 @@ export default observer(function ProfileEditForm({setEditMode}: Props) {
         <Formik
             initialValues={{displayName: profile?.displayName, bio: profile?.bio}}
             onSubmit={values => {
-                console.log(values);
-            updateProfile(values).then(() => {
-                setEditMode(false);
+                updateProfile(values).then(() => {
+                    setEditMode(false);
             })
             }}
             validationSchema={Yup.object({

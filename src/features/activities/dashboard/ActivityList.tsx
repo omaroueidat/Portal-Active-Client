@@ -27,7 +27,6 @@ export default observer(function ActivityList() {
                     <Segment> 
                         <Item.Group divided>
                             {activities.map(activity => {
-                                console.log(activity)
                                 return(
                                 <ActivityListItem activity={activity} key={activity.id}/>
                             )})}

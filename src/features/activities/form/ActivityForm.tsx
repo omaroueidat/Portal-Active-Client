@@ -99,7 +99,7 @@ function ActivityForm() {
 
                         <Button 
                             disabled = {isSubmitting || !isValid || !dirty}
-                            onClick={() => console.log(errors)}
+                            onClick={() => errors ?? console.log(errors)}
                             loading={isSubmitting}
                             floated='right' 
                             positive type='submit' 
