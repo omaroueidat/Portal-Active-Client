@@ -7,6 +7,7 @@ import { store } from "./store";
 export default class UserStore{
     // User that we will store
     user: User | null = null;
+    fbLoading = false;
 
     
     constructor() {
@@ -75,5 +76,24 @@ export default class UserStore{
 
     setDisplayName = (name: string) => {
         if (this.user) this.user.displayName = name;
+    }
+
+    facebookLogin = async (accessToken: string) => {
+        this.fbLoading = true;
+        try{
+            // Send the request for facebook login to the api
+            const user = await agent.Account.fbLogin(accessToken);
+            store.commonStore.setToken(user.token);
+
+            runInAction(() => {
+                this.user = user;
+            })
+
+            router.navigate('/activities');
+        } catch (err){
+            console.log(err);
+        } finally {
+            this.fbLoading = false;
+        }
     }
 }
