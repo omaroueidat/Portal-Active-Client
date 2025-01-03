@@ -47,3 +47,9 @@ body{
   
   /*end home page styles*/
   
+  @media (max-width: 800px) {
+    .masthead {
+      display: flex;
+      justify-content: center;
+    }
+  }

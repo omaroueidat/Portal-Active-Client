@@ -39,22 +39,16 @@ export default class UserStore{
     }
 
     register = async(creds: UserFormValues) => {
-        // Send the request and 
-        const user = await agent.Account.register(creds);
-
-        // Set the token inisde the common Store
-        store.commonStore.setToken(user.token);
-
-        this.startRefreshTokenTimer(user);
-
-        // Store the user
-        runInAction(() => this.user = user);
+        
+        // Send the request
+        await agent.Account.register(creds);
 
         // Go to the activities
-        router.navigate('/activities');
+        router.navigate(`/account/registerSuccess?email=${creds.email}`);
 
         // Close the Modal Form
         store.modalStore.closeModal();
+        
     }
 
     logout = () => {

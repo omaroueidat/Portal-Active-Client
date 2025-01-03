@@ -27,18 +27,25 @@ export default observer(function RegisterForm(){
                 ({handleSubmit, isSubmitting, errors, isValid, dirty}) => (
                     <Form className='ui form error' onSubmit={handleSubmit} autoComplete="off">
                         <Header as='h2' content='Sign up to Protal Active' color='teal' textAlign="center" />
-                        <MyTextInput placeholder="Email" name="email"/>
-                        <MyTextInput placeholder="Display Name" name="displayName"/>
                         <MyTextInput placeholder="Username" name="username"/>
+                        <MyTextInput placeholder="Display Name" name="displayName"/>
+                        <MyTextInput placeholder="Email" name="email"/>
                         <MyTextInput placeholder="Passsword" name="password" type="password"/>
                         <ErrorMessage 
                             name='error'
-                            render={() => <ValidationError errors={errors.error as unknown as string[]} />}
+                            
+                            render={() => {
+                                console.log(errors); 
+                                if (Array.isArray(errors.error)) {
+                                    return <ValidationError errors={errors.error} />;
+                                } 
+                                return null;
+                            }}
                         />
                         <Button 
                             disabled={!isValid || !dirty || isSubmitting}
                             positive 
-                            content='Login' 
+                            content='Register' 
                             type='submit' 
                             fluid 
                             loading={isSubmitting}
